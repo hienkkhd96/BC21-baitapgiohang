@@ -4,7 +4,13 @@ import ItemPhone from "./ItemPhone";
 export default class DanhSachSanPham extends Component {
   renderListPhone = () => {
     return this.props.dataPhones.map((item) => {
-      return <ItemPhone handleChange={this.props.handleChange} data={item} />;
+      return (
+        <ItemPhone
+          handleThemSanPham={this.props.handleThemSanPham}
+          handleChange={this.props.handleChange}
+          data={item}
+        />
+      );
     });
   };
   render() {

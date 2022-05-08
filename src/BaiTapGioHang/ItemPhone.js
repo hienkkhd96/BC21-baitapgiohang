@@ -23,7 +23,14 @@ export default class ItemPhone extends Component {
             >
               Xem chi tiết
             </button>
-            <button className="btn btn-danger mx-2">Thêm giỏ hàng</button>
+            <button
+              onClick={() => {
+                this.props.handleThemSanPham(this.props.data);
+              }}
+              className="btn btn-danger mx-2"
+            >
+              Thêm giỏ hàng
+            </button>
           </div>
         </div>
       </div>
