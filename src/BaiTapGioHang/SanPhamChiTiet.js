@@ -9,21 +9,23 @@ export default class SanPhamChiTiet extends Component {
 
         <div className="col-7">
           <table className="table">
-            <tr>
-              <td>Màn hình</td>
+            <tbody>
+              <tr>
+                <td>Màn hình</td>
 
-              <td>{manHinh}</td>
-            </tr>
-            <tr>
-              <td>Hệ điều hành</td>
+                <td>{manHinh}</td>
+              </tr>
+              <tr>
+                <td>Hệ điều hành</td>
 
-              <td>{heDieuHanh}</td>
-            </tr>
-            <tr>
-              <td>Giá bán</td>
+                <td>{heDieuHanh}</td>
+              </tr>
+              <tr>
+                <td>Giá bán</td>
 
-              <td>{giaBan}</td>
-            </tr>
+                <td>{giaBan}</td>
+              </tr>
+            </tbody>
           </table>
         </div>
       </div>

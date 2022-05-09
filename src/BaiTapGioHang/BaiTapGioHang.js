@@ -1,3 +1,4 @@
+/* eslint-disable eqeqeq */
 import React, { Component } from "react";
 import DanhSachSanPham from "./DanhSachSanPham";
 import { dataPhones } from "./dataPhones";
@@ -17,7 +18,6 @@ export default class BaiTapGioHang extends Component {
       return item.maSP == sp.maSP;
     });
 
-    console.log({ index });
 
     if (index == -1) {
       let spGioHang = { ...sp, soLuong: 1 };
@@ -28,7 +28,6 @@ export default class BaiTapGioHang extends Component {
     }
 
     this.setState({ gioHang: gioHangCopy }, () => {
-      console.log(this.state.gioHang);
     });
   };
 
@@ -37,7 +36,6 @@ export default class BaiTapGioHang extends Component {
   };
 
   handleThayDoiSoLuong = (idSp, giaTri) => {
-    console.log(idSp);
 
     let index = this.state.gioHang.findIndex((item) => {
       return item.maSP == idSp;
@@ -46,10 +44,6 @@ export default class BaiTapGioHang extends Component {
     let gioHangCopy = [...this.state.gioHang];
     if (index !== -1) {
       gioHangCopy[index].soLuong = gioHangCopy[index].soLuong + giaTri;
-
-      // if (gioHangCopy[index].soLuong === 0) {
-      //   gioHangCopy.splice(index, 1);
-      // }
       gioHangCopy[index].soLuong === 0 && gioHangCopy.splice(index, 1);
     }
 

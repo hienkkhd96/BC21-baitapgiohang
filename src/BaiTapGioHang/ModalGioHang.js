@@ -4,9 +4,9 @@ const tangSoLuongSp = 1;
 const giamSoLuongSp = -1;
 export default class ModalGioHang extends Component {
   renderGioHang = () => {
-    return this.props.gioHang.map((sp) => {
+    return this.props.gioHang.map((sp,index) => {
       return (
-        <tr>
+        <tr key={index}>
           <td>{sp.maSP}</td>
           <td>{sp.tenSP}</td>
           <td>
@@ -45,6 +45,13 @@ export default class ModalGioHang extends Component {
 
     return tongSoLuong;
   };
+  getSotien = () => {
+    let tongTien = this.props.gioHang.reduce((tong, sp) => {
+      return (tong += sp.soLuong* sp.giaBan);
+    }, 0);
+
+    return tongTien;
+  };
   render() {
     return (
       <div className="mb-5">
@@ -74,7 +81,7 @@ export default class ModalGioHang extends Component {
             <div className="modal-content">
               <div className="modal-header">
                 <h5 className="modal-title" id="exampleModalLabel">
-                  Modal title
+                  Giỏ hàng
                 </h5>
                 <button
                   type="button"
@@ -89,26 +96,33 @@ export default class ModalGioHang extends Component {
                 {/* render danh sách sản phẩm trong giỏi hàng */}
                 <table className="table">
                   <thead>
-                    <th>Mã sản phẩm</th>
-                    <th>Tên</th>
-                    <th>Hình ảnh</th>
-                    <th>Giá bán</th>
-                    <th>Số lượng</th>
-                    <th>Tổng tiền</th>
+                    <tr>
+                      <th>Mã sản phẩm</th>
+                      <th>Tên</th>
+                      <th>Hình ảnh</th>
+                      <th>Giá bán</th>
+                      <th>Số lượng</th>
+                      <th>Tổng tiền</th>
+                    </tr>
                   </thead>
                   <tbody>{this.renderGioHang()}</tbody>
                 </table>
               </div>
-              <div className="modal-footer">
+              {this.getSoLuongGioHang()>0 &&
+              <div className="text-dark font-weight-bold">Tổng tiền =
+                <span className="ml-2">{this.getSotien()}</span>
+              </div>
+              }
+              <div className="modal-footer d-flex justify-content-between">
+                <button type="button" className="btn btn-primary">
+                  Thanh toán
+                </button>
                 <button
                   type="button"
                   className="btn btn-secondary"
                   data-dismiss="modal"
                 >
                   Close
-                </button>
-                <button type="button" className="btn btn-primary">
-                  Save changes
                 </button>
               </div>
             </div>
